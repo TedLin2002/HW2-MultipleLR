@@ -1,0 +1,616 @@
+{
+  "life": {
+    "shape": [
+      2938,
+      22
+    ],
+    "n_features_after_prep": 20,
+    "prep_log": [
+      "刪除目標值缺失的 10 筆資料。",
+      "排除識別欄位：Country。",
+      "依「Country」分組切分（同一組只出現在訓練或測試其中一邊），避免資料洩漏。",
+      "切分訓練集 2336 筆、測試集 592 筆（test_size=0.2）。",
+      "以訓練集中位數填補 2513 個數值缺失值。",
+      "類別欄位 One-Hot 編碼（drop_first 避免虛擬變數陷阱）：Status。"
+    ],
+    "suggested_k": {
+      "forward": 11,
+      "rfe": 11,
+      "lasso": 9,
+      "kbest": 16
+    },
+    "selected": [
+      "Schooling",
+      "Adult Mortality",
+      "HIV/AIDS",
+      "Polio",
+      "BMI",
+      "Income composition of resources",
+      "Status_Developing",
+      "Diphtheria",
+      "GDP",
+      "under-five deaths",
+      "infant deaths"
+    ],
+    "train": {
+      "MAE": 3.0021325598811117,
+      "MSE": 16.680916737424884,
+      "RMSE": 4.084227801852498,
+      "R2": 0.8122637975607043,
+      "Adj_R2": 0.8113752010775579
+    },
+    "test": {
+      "MAE": 3.1283925687041454,
+      "MSE": 16.73923881616593,
+      "RMSE": 4.09136148686057,
+      "R2": 0.8208408263507764,
+      "Adj_R2": 0.8174429799539807
+    },
+    "pi_coverage": 0.9341216216216216,
+    "coef": {
+      "const": {
+        "coef": 55.310567,
+        "std_err": 0.656227,
+        "t": 84.28568,
+        "p_value": 0.0,
+        "ci_low": 54.023715,
+        "ci_high": 56.597419
+      },
+      "Schooling": {
+        "coef": 0.766279,
+        "std_err": 0.046602,
+        "t": 16.442961,
+        "p_value": 0.0,
+        "ci_low": 0.674892,
+        "ci_high": 0.857665
+      },
+      "Adult Mortality": {
+        "coef": -0.02139,
+        "std_err": 0.000934,
+        "t": -22.909659,
+        "p_value": 0.0,
+        "ci_low": -0.023221,
+        "ci_high": -0.019559
+      },
+      "HIV/AIDS": {
+        "coef": -0.447958,
+        "std_err": 0.023014,
+        "t": -19.464243,
+        "p_value": 0.0,
+        "ci_low": -0.493089,
+        "ci_high": -0.402828
+      },
+      "Polio": {
+        "coef": 0.035932,
+        "std_err": 0.005316,
+        "t": 6.758924,
+        "p_value": 0.0,
+        "ci_low": 0.025507,
+        "ci_high": 0.046357
+      },
+      "BMI": {
+        "coef": 0.048766,
+        "std_err": 0.005178,
+        "t": 9.417169,
+        "p_value": 0.0,
+        "ci_low": 0.038611,
+        "ci_high": 0.05892
+      },
+      "Income composition of resources": {
+        "coef": 4.796844,
+        "std_err": 0.712932,
+        "t": 6.728336,
+        "p_value": 0.0,
+        "ci_low": 3.398795,
+        "ci_high": 6.194892
+      },
+      "Status_Developing": {
+        "coef": -1.805078,
+        "std_err": 0.281549,
+        "t": -6.411234,
+        "p_value": 0.0,
+        "ci_low": -2.357192,
+        "ci_high": -1.252964
+      },
+      "Diphtheria": {
+        "coef": 0.031585,
+        "std_err": 0.005209,
+        "t": 6.063378,
+        "p_value": 0.0,
+        "ci_low": 0.02137,
+        "ci_high": 0.041799
+      },
+      "GDP": {
+        "coef": 4.1e-05,
+        "std_err": 7e-06,
+        "t": 5.568311,
+        "p_value": 0.0,
+        "ci_low": 2.6e-05,
+        "ci_high": 5.5e-05
+      },
+      "under-five deaths": {
+        "coef": -0.074237,
+        "std_err": 0.006422,
+        "t": -11.560173,
+        "p_value": 0.0,
+        "ci_low": -0.08683,
+        "ci_high": -0.061644
+      },
+      "infant deaths": {
+        "coef": 0.098023,
+        "std_err": 0.008686,
+        "t": 11.285255,
+        "p_value": 0.0,
+        "ci_low": 0.08099,
+        "ci_high": 0.115056
+      }
+    },
+    "comparison": [
+      {
+        "模型": "OLS 全部特徵（20）",
+        "特徵數": 20,
+        "MAE": 4.49933,
+        "MSE": 45.26957,
+        "RMSE": 6.72827,
+        "R2": 0.51548,
+        "Adj_R2": 0.49851
+      },
+      {
+        "模型": "OLS 選取特徵（11）",
+        "特徵數": 11,
+        "MAE": 3.12839,
+        "MSE": 16.73924,
+        "RMSE": 4.09136,
+        "R2": 0.82084,
+        "Adj_R2": 0.81744
+      },
+      {
+        "模型": "Ridge（全部特徵，CV α）",
+        "特徵數": 20,
+        "MAE": 3.11926,
+        "MSE": 16.49248,
+        "RMSE": 4.06109,
+        "R2": 0.82348,
+        "Adj_R2": 0.8173
+      },
+      {
+        "模型": "Lasso（全部特徵，CV α）",
+        "特徵數": 20,
+        "MAE": 3.10781,
+        "MSE": 16.46435,
+        "RMSE": 4.05763,
+        "R2": 0.82378,
+        "Adj_R2": 0.81761
+      }
+    ],
+    "assumptions": [
+      {
+        "假設": "誤差獨立（Durbin–Watson）",
+        "統計量": 0.6974,
+        "p 值": NaN,
+        "判讀": "可能存在自相關"
+      },
+      {
+        "假設": "誤差常態（Jarque–Bera）",
+        "統計量": 464.1273,
+        "p 值": 0.0,
+        "判讀": "殘差偏離常態"
+      },
+      {
+        "假設": "變異數同質（Breusch–Pagan）",
+        "統計量": 248.9649,
+        "p 值": 0.0,
+        "判讀": "存在異質變異"
+      }
+    ],
+    "vif": [
+      {
+        "feature": "under-five deaths",
+        "VIF": 177.2
+      },
+      {
+        "feature": "infant deaths",
+        "VIF": 175.97
+      },
+      {
+        "feature": "Schooling",
+        "VIF": 3.11
+      },
+      {
+        "feature": "Income composition of resources",
+        "VIF": 2.87
+      },
+      {
+        "feature": "Polio",
+        "VIF": 2.13
+      },
+      {
+        "feature": "Diphtheria",
+        "VIF": 2.12
+      },
+      {
+        "feature": "Adult Mortality",
+        "VIF": 1.84
+      },
+      {
+        "feature": "HIV/AIDS",
+        "VIF": 1.53
+      },
+      {
+        "feature": "Status_Developing",
+        "VIF": 1.52
+      },
+      {
+        "feature": "BMI",
+        "VIF": 1.48
+      },
+      {
+        "feature": "GDP",
+        "VIF": 1.44
+      }
+    ]
+  },
+  "flood": {
+    "shape": [
+      3000,
+      21
+    ],
+    "n_features_after_prep": 20,
+    "prep_log": [
+      "切分訓練集 2400 筆、測試集 600 筆（test_size=0.2）。"
+    ],
+    "suggested_k": {
+      "forward": 20,
+      "rfe": 20,
+      "lasso": 20,
+      "kbest": 20
+    },
+    "selected": [
+      "Encroachments",
+      "MonsoonIntensity",
+      "DrainageSystems",
+      "InadequatePlanning",
+      "Siltation",
+      "DeterioratingInfrastructure",
+      "RiverManagement",
+      "CoastalVulnerability",
+      "Watersheds",
+      "IneffectiveDisasterPreparedness",
+      "PoliticalFactors",
+      "DamsQuality",
+      "TopographyDrainage",
+      "Urbanization",
+      "Landslides",
+      "AgriculturalPractices",
+      "WetlandLoss",
+      "Deforestation",
+      "ClimateChange",
+      "PopulationScore"
+    ],
+    "train": {
+      "MAE": 0.014715627973279967,
+      "MSE": 0.0003354390678459445,
+      "RMSE": 0.018314995709689492,
+      "R2": 0.8248670061158111,
+      "Adj_R2": 0.8233946816611311
+    },
+    "test": {
+      "MAE": 0.013632162616939496,
+      "MSE": 0.00029100678160757436,
+      "RMSE": 0.01705892088051218,
+      "R2": 0.8494940451068514,
+      "Adj_R2": 0.8442952211036339
+    },
+    "pi_coverage": 0.96,
+    "coef": {
+      "const": {
+        "coef": 0.049403,
+        "std_err": 0.004313,
+        "t": 11.454837,
+        "p_value": 0.0,
+        "ci_low": 0.040945,
+        "ci_high": 0.05786
+      },
+      "Encroachments": {
+        "coef": 0.0047,
+        "std_err": 0.000193,
+        "t": 24.361427,
+        "p_value": 0.0,
+        "ci_low": 0.004322,
+        "ci_high": 0.005078
+      },
+      "MonsoonIntensity": {
+        "coef": 0.004645,
+        "std_err": 0.00019,
+        "t": 24.41676,
+        "p_value": 0.0,
+        "ci_low": 0.004272,
+        "ci_high": 0.005018
+      },
+      "DrainageSystems": {
+        "coef": 0.004431,
+        "std_err": 0.000189,
+        "t": 23.501322,
+        "p_value": 0.0,
+        "ci_low": 0.004061,
+        "ci_high": 0.004801
+      },
+      "InadequatePlanning": {
+        "coef": 0.004711,
+        "std_err": 0.000192,
+        "t": 24.547495,
+        "p_value": 0.0,
+        "ci_low": 0.004335,
+        "ci_high": 0.005088
+      },
+      "Siltation": {
+        "coef": 0.004497,
+        "std_err": 0.00019,
+        "t": 23.729653,
+        "p_value": 0.0,
+        "ci_low": 0.004126,
+        "ci_high": 0.004869
+      },
+      "DeterioratingInfrastructure": {
+        "coef": 0.004577,
+        "std_err": 0.000189,
+        "t": 24.203803,
+        "p_value": 0.0,
+        "ci_low": 0.004206,
+        "ci_high": 0.004947
+      },
+      "RiverManagement": {
+        "coef": 0.004546,
+        "std_err": 0.000188,
+        "t": 24.233807,
+        "p_value": 0.0,
+        "ci_low": 0.004178,
+        "ci_high": 0.004914
+      },
+      "CoastalVulnerability": {
+        "coef": 0.004698,
+        "std_err": 0.000192,
+        "t": 24.468707,
+        "p_value": 0.0,
+        "ci_low": 0.004322,
+        "ci_high": 0.005075
+      },
+      "Watersheds": {
+        "coef": 0.004549,
+        "std_err": 0.000191,
+        "t": 23.808342,
+        "p_value": 0.0,
+        "ci_low": 0.004174,
+        "ci_high": 0.004923
+      },
+      "IneffectiveDisasterPreparedness": {
+        "coef": 0.004341,
+        "std_err": 0.000187,
+        "t": 23.270648,
+        "p_value": 0.0,
+        "ci_low": 0.003976,
+        "ci_high": 0.004707
+      },
+      "PoliticalFactors": {
+        "coef": 0.00458,
+        "std_err": 0.000193,
+        "t": 23.776852,
+        "p_value": 0.0,
+        "ci_low": 0.004202,
+        "ci_high": 0.004957
+      },
+      "DamsQuality": {
+        "coef": 0.004802,
+        "std_err": 0.00019,
+        "t": 25.232224,
+        "p_value": 0.0,
+        "ci_low": 0.004429,
+        "ci_high": 0.005175
+      },
+      "TopographyDrainage": {
+        "coef": 0.004539,
+        "std_err": 0.000196,
+        "t": 23.214262,
+        "p_value": 0.0,
+        "ci_low": 0.004156,
+        "ci_high": 0.004923
+      },
+      "Urbanization": {
+        "coef": 0.004538,
+        "std_err": 0.000192,
+        "t": 23.635482,
+        "p_value": 0.0,
+        "ci_low": 0.004162,
+        "ci_high": 0.004915
+      },
+      "Landslides": {
+        "coef": 0.004618,
+        "std_err": 0.000192,
+        "t": 23.992312,
+        "p_value": 0.0,
+        "ci_low": 0.004241,
+        "ci_high": 0.004996
+      },
+      "AgriculturalPractices": {
+        "coef": 0.004395,
+        "std_err": 0.000194,
+        "t": 22.597975,
+        "p_value": 0.0,
+        "ci_low": 0.004013,
+        "ci_high": 0.004776
+      },
+      "WetlandLoss": {
+        "coef": 0.004375,
+        "std_err": 0.000189,
+        "t": 23.198835,
+        "p_value": 0.0,
+        "ci_low": 0.004005,
+        "ci_high": 0.004745
+      },
+      "Deforestation": {
+        "coef": 0.004478,
+        "std_err": 0.000191,
+        "t": 23.441724,
+        "p_value": 0.0,
+        "ci_low": 0.004103,
+        "ci_high": 0.004852
+      },
+      "ClimateChange": {
+        "coef": 0.004148,
+        "std_err": 0.000192,
+        "t": 21.556682,
+        "p_value": 0.0,
+        "ci_low": 0.003771,
+        "ci_high": 0.004526
+      },
+      "PopulationScore": {
+        "coef": 0.004024,
+        "std_err": 0.00019,
+        "t": 21.199534,
+        "p_value": 0.0,
+        "ci_low": 0.003652,
+        "ci_high": 0.004396
+      }
+    },
+    "comparison": [
+      {
+        "模型": "OLS 全部特徵（20）",
+        "特徵數": 20,
+        "MAE": 0.01363,
+        "MSE": 0.00029,
+        "RMSE": 0.01706,
+        "R2": 0.84949,
+        "Adj_R2": 0.8443
+      },
+      {
+        "模型": "OLS 選取特徵（20）",
+        "特徵數": 20,
+        "MAE": 0.01363,
+        "MSE": 0.00029,
+        "RMSE": 0.01706,
+        "R2": 0.84949,
+        "Adj_R2": 0.8443
+      },
+      {
+        "模型": "Ridge（全部特徵，CV α）",
+        "特徵數": 20,
+        "MAE": 0.01364,
+        "MSE": 0.00029,
+        "RMSE": 0.01706,
+        "R2": 0.84954,
+        "Adj_R2": 0.84434
+      },
+      {
+        "模型": "Lasso（全部特徵，CV α）",
+        "特徵數": 20,
+        "MAE": 0.01363,
+        "MSE": 0.00029,
+        "RMSE": 0.01706,
+        "R2": 0.84952,
+        "Adj_R2": 0.84432
+      }
+    ],
+    "assumptions": [
+      {
+        "假設": "誤差獨立（Durbin–Watson）",
+        "統計量": 2.0028,
+        "p 值": NaN,
+        "判讀": "接近 2 表示無自相關"
+      },
+      {
+        "假設": "誤差常態（Jarque–Bera）",
+        "統計量": 1.4357,
+        "p 值": 0.4878,
+        "判讀": "無法拒絕常態"
+      },
+      {
+        "假設": "變異數同質（Breusch–Pagan）",
+        "統計量": 17.0292,
+        "p 值": 0.6511,
+        "判讀": "無法拒絕同質"
+      }
+    ],
+    "vif": [
+      {
+        "feature": "PopulationScore",
+        "VIF": 1.02
+      },
+      {
+        "feature": "MonsoonIntensity",
+        "VIF": 1.02
+      },
+      {
+        "feature": "Encroachments",
+        "VIF": 1.01
+      },
+      {
+        "feature": "AgriculturalPractices",
+        "VIF": 1.01
+      },
+      {
+        "feature": "Deforestation",
+        "VIF": 1.01
+      },
+      {
+        "feature": "IneffectiveDisasterPreparedness",
+        "VIF": 1.01
+      },
+      {
+        "feature": "InadequatePlanning",
+        "VIF": 1.01
+      },
+      {
+        "feature": "Siltation",
+        "VIF": 1.01
+      },
+      {
+        "feature": "WetlandLoss",
+        "VIF": 1.01
+      },
+      {
+        "feature": "DrainageSystems",
+        "VIF": 1.01
+      },
+      {
+        "feature": "PoliticalFactors",
+        "VIF": 1.01
+      },
+      {
+        "feature": "RiverManagement",
+        "VIF": 1.01
+      },
+      {
+        "feature": "Landslides",
+        "VIF": 1.01
+      },
+      {
+        "feature": "DamsQuality",
+        "VIF": 1.01
+      },
+      {
+        "feature": "ClimateChange",
+        "VIF": 1.01
+      },
+      {
+        "feature": "Urbanization",
+        "VIF": 1.01
+      },
+      {
+        "feature": "Watersheds",
+        "VIF": 1.01
+      },
+      {
+        "feature": "DeterioratingInfrastructure",
+        "VIF": 1.01
+      },
+      {
+        "feature": "TopographyDrainage",
+        "VIF": 1.01
+      },
+      {
+        "feature": "CoastalVulnerability",
+        "VIF": 1.0
+      }
+    ]
+  }
+}
