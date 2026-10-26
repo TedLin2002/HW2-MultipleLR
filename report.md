@@ -142,7 +142,7 @@
 
 ## 8. GPT 輔助內容
 
-> 以下標示本作業中由 AI（ChatGPT 與 Claude Code）協助完成的部分。完整對話紀錄另見 `chat_logs/*.pdf`。
+> 以下標示本作業中由 AI（ChatGPT 與 Claude Code）協助完成的部分。對話紀錄 PDF：`chat_logs/01_ChatGPT_選題對話.pdf`（ChatGPT 選題對話，由對話內容複製轉存）、`chat_logs/02_ClaudeCode_開發對話.pdf`（Claude Code 開發過程整理）。
 
 | 項目 | AI 協助內容 | 本人工作 |
 |---|---|---|
@@ -153,8 +153,12 @@
 
 ## 9. NotebookLM 摘要
 
-> ⚠️ 草稿：請將下列來源加入 NotebookLM，提問「這些研究如何用回歸模型預測平均壽命？使用哪些特徵、得到什麼結果？」，再以 NotebookLM 的實際輸出取代或修訂本段，並截圖附上。
+> **狀態：待補。** 請把下列來源加入 NotebookLM，並提問：「這些研究如何用回歸模型預測 WHO 平均壽命？使用了哪些特徵、前處理方法，得到什麼結果？」接著將 NotebookLM 的實際回答（100 字以上）貼在本節，並附上截圖 `chat_logs/03_NotebookLM.png`。
 >
-> 建議來源：Kaggle 資料集頁面與熱門 Notebook、[arXiv 2510.00542](https://www.arxiv.org/pdf/2510.00542)、[IJSS: Predicting Life Expectancy using ML](https://banglajol.info/index.php/ijss/article/view/81045)、[i-JOE: Life Expectancy Prediction through Immunization and HDI Factors](https://online-journals.org/index.php/i-joe/article/view/33315)、[EnjoyAlgorithms: Life expectancy prediction using linear regression](https://enjoyalgorithms.com/blog/life-expectancy-prediction-using-linear-regression)。
+> 來源：[Kaggle 資料集頁面](https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who)、[arXiv 2510.00542](https://www.arxiv.org/pdf/2510.00542)、[IJSS: Predicting Life Expectancy using ML](https://banglajol.info/index.php/ijss/article/view/81045)、[i-JOE: Life Expectancy Prediction through Immunization and HDI Factors](https://online-journals.org/index.php/i-joe/article/view/33315)、[EnjoyAlgorithms: Life expectancy prediction using linear regression](https://enjoyalgorithms.com/blog/life-expectancy-prediction-using-linear-regression)
 
-**摘要（草稿）**：網路上針對 WHO Life Expectancy 資料集的解法，大多遵循「清理缺失值 → 探索相關性 → 建立回歸模型 → 比較指標」的流程。缺失值的常見處理方式是刪除或以中位數／平均值填補，部分研究也會先標準化特徵，再用 p 值或 R² 逐步篩選變數。多篇研究一致指出，**HIV/AIDS、成人死亡率、受教育年數（Schooling）與收入組成指數（Income composition of resources）** 是影響平均壽命最重要的因子，與本作業 Forward Stepwise 選出的前幾名一致。在模型表現上，以 Boruta 或正則化隨機森林做特徵篩選後，Random Forest 等樹狀集成模型可達到 R² 約 0.95 以上；線性回歸則多落在 0.8 左右，通常被視為可解釋性高但準確度較低的基準模型。少數研究也提醒，該資料集的 GDP 與 Population 欄位有明顯錯誤值，國家內的逐年資料也並非獨立。這兩點與本作業發現 `Population` 會嚴重拖累 OLS，以及 Durbin–Watson 顯示自相關的結果相互印證。
+**（NotebookLM 回答貼於此處）**
+
+### 9.1 參考：AI 整理的網路解法摘要（由 Claude Code 依網路搜尋整理，非 NotebookLM 產出）
+
+網路上針對 WHO Life Expectancy 資料集的解法，大多遵循「清理缺失值 → 探索相關性 → 建立回歸模型 → 比較指標」的流程。常見做法是刪除含缺失值的資料列或填補缺失值，接著標準化特徵，再依 p 值與 R² 篩選變數。一篇以 Boruta 與正則化隨機森林（RRF）做特徵篩選的研究指出，HIV/AIDS、成人死亡率、受教育年數（Schooling）與收入組成指數（Income composition of resources）是最重要的預測因子，這與本作業 Forward Stepwise 選出的前幾名一致。該研究比較八種模型，Random Forest 表現最好（R² = 0.969），線性回歸與神經網路則表現最差。另一篇研究以 bagging 方法達到約 97% 的 R²，同樣發現 HIV/AIDS、成人死亡率與收入組成最具影響力。arXiv 論文則比較線性回歸、回歸決策樹與隨機森林，並用 p 值與特徵重要度解讀模型。整體而言，線性回歸在這個資料集上通常作為可解釋性高、但準確度不如樹狀集成模型的基準模型；本作業測試集 R² = 0.82 的結果也符合這個定位。
