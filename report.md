@@ -1,7 +1,7 @@
 # HW2 報告：多元線性回歸 × CRISP-DM
 
 > 主題：以 WHO 健康與經濟指標預測各國平均壽命（主題一），並以洪水預測資料集作為第二個問題（主題二）
-> 線上展示：`<Streamlit 網址>`　｜　GitHub：`<GitHub 網址>`
+> 線上展示：`<Streamlit 網址>`　｜　GitHub：[TedLin2002/HW2-MultipleLR](https://github.com/TedLin2002/HW2-MultipleLR)
 > 重現方式：`python analysis.py`（產生 `figures/` 中所有圖表與 `results.json`）；互動版：`streamlit run app.py`
 
 ## 0. 資料來源
